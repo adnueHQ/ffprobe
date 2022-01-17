@@ -12,10 +12,9 @@ With added support for Apple M1.
 List the output of ffprobe for a media file in a convenient JSON format:
 
 ``` js
-var ffprobe = require('ffprobe'),
-    ffprobeStatic = require('ffprobe-static');
+var ffprobe = require('ffprobe');
 
-ffprobe('./file.mp4', { path: ffprobeStatic.path }, function (err, info) {
+ffprobe('./file.mp4', function (err, info) {
   if (err) return done(err);
   console.log(info);
 /***
@@ -124,10 +123,9 @@ ffprobe('./file.mp4', { path: ffprobeStatic.path }, function (err, info) {
 List the output of ffprobe for a media file in a convenient JSON format:
 
 ``` js
-var ffprobe = require('ffprobe'),
-    ffprobeStatic = require('ffprobe-static');
+var ffprobe = require('ffprobe');
 
-ffprobe('./file.mp4', { path: ffprobeStatic.path })
+ffprobe('./file.mp4')
   .then(function (info) {
     console.log(info);
     /***
@@ -158,10 +156,6 @@ ffprobe('./file.mp4', { path: ffprobeStatic.path })
 
 * `mediaFilePath` - path to your audio / video / image that you want to get media
   info for.
-* `opts` - options object with the following options:
-  * `path` - path to ffprobe binary (You can use
-    [`ffprobe-static`](https://github.com/joshwnj/ffprobe-static) to easily get
-    a static binary that you can install with npm.
 * `cb(err, info)` - standard callback, with the info returned as a javascript
   object. NB: If the `cb` parameter is not provided, a `Promise` will be returned
   allowing chained `then()`, `catch()` methods.
